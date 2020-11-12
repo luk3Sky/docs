@@ -1,6 +1,6 @@
 export default {
     files: '**/*.{markdown,mdx}',
-    ignore: ['docs/*'],
+    /*ignore: ['docs/*', 'examples/*'],*/
     base: '/docs/',
     dest: '/docs',
     title: "Pera-Swarm",
@@ -8,7 +8,10 @@ export default {
     menu: [
         'Home',
         'Getting Started',
-        { name: 'Components', menu: ['Alert'] },
+        'Hardware',
+        'Firmware',
+        'Simulator',
+        'GUI'
     ]
 
 }
