@@ -11,7 +11,7 @@ export default {
         'Hardware',
         'Firmware',
         'Simulator',
-        'GUI'
+        'Localization'
     ]
 
 }
