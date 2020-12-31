@@ -7,11 +7,10 @@ export default {
     public: '/public',
     menu: [
         'Home',
-        'Getting Started',
         'Hardware',
         'Firmware',
         'Simulator',
-        'Localization'
+        'Localization',
+        { name: 'Communication', menu: [] }
     ]
-
 }
