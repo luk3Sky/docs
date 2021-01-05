@@ -7,3 +7,86 @@ menu: Communication
 # MQTT Communication
 
 Please refer [this](https://docs.google.com/document/d/e/2PACX-1vTm_0MmPGw8-B8v63e-Jc8sfDNO9txeNVYmvAswR7ti8Glnw_4Wqmm6OpOiHOp8b9D15OUumNXIjC5y/pub) for latest communication protocols.
+
+channel: You can create any communication channel by defining this variable. Default is 'v1' channel will be appended to every MQTT topic. (ex: _v1/robot/msg/broadcast_)
+
+
+### /robot/msg/{robotID}
+
+<table>
+<tr>
+    <td>Source</td>
+    <td>Server</td>
+</tr>
+
+<tr>
+    <td>Destination</td>
+    <td>Robot</td>
+</tr>
+</table>
+
+Data Type: String
+Sample Message:
+    {eNum} {integer}
+
+Description:
+For an individual robot
+
+---
+
+{channal}/robot/msg/broadcast
+
+Server
+Robot
+String
+
+{eNum} {integer}
+
+For all active robots
+
+Ex:
+ID? -1
+MODE 1
+START -1
+STOP -1
+RESET -1
+
+
+{channal}/robot/live
+
+Robot
+Server
+String
+
+{robotId} {reality}
+
+Heartbeat signal from the robot to server. Server will keep a track of this to remove dead robots from the system.
+reality: 0:virtual, 1:real
+
+
+{channal}/robot/create
+
+Loc,Robot
+Server,GUI
+JSON
+
+{
+   "id":0,
+   "x":10,
+   "y":10,
+   "heading":0.0
+}
+
+This will be originated by robots (physical, virtual) themself at the beginning, or by the localization system
+Information taken by the simulator will create a robot instance, and GUI will create a robot object too.
+x,y,z,heading : number in #.## format
+
+{channal}/robot/delete
+
+Server,GUI,
+Any
+JSON
+
+{ "id":0 }
+
+This will inform other systems to remove the robot. Invoked by the prune scheduler on the server.
