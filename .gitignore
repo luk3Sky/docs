@@ -1,4 +1,8 @@
-.docz
-docs/
+*.gem
+.bundle
+.ruby-version
+.jekyll-cache
+.sass-cache
+_site
+Gemfile.lock
 node_modules
-examples
