@@ -16,7 +16,7 @@ permalink: robot/firmware/motor_library
 {:toc}
 
 ----
-## Getting started
+# Motors
 
 To add the motors of the Swarm-Robot, you need to include following header file.
 
@@ -89,12 +89,12 @@ motors.stop(int16_t delay);
 ### motors.test();
 
 This is used to test the functionality of the motors. It will execute following procedures once called.
-- Move forward with increasing speed for 6.5 seconds.
-- Move forward with decreasing speed for 6.5 seconds.
-- Move backward with increasing speed for 6.5 seconds.
-- Move backward with decreasing speed for 6.5 seconds.
-- Rotate Clockwise for 3 seconds.
-- Rotate Counter Clockwise for 3 seconds.
+- Turn Counter Clockwise for ~0.5 seconds.
+- Turn Clockwise for ~0.5 seconds.
+- Move forward with increasing speed for ~6.5 seconds.
+- Move forward with decreasing speed for ~6.5 seconds.
+- Move backward with increasing speed for ~6.5 seconds.
+- Move backward with decreasing speed for ~6.5 seconds.
 
 ```cpp
 motors.test()
@@ -120,4 +120,68 @@ Set the error correction values to the motors. This can be updated at any time a
 motors.rightCorrection =  memory.getErrorCorrection(RIGHT);
 motors.leftCorrection = memory.getErrorCorrection(LEFT);
 
+```
+
+
+----
+# Wheel Encoders
+
+Robot wheels are comes with optical rotary encoders. There are 36 holes in the robot wheel, therefore 36 signals microcontroller will be captured once the wheel make a full turn. Since the diameter of the wheel is 34mm, the perimeter of the wheel is 106.8mm. Then one tick of the rotary encoder represents a movement of nearly 3mm.
+
+One thing to note that, since there is only one counter for wheel, and it can't detect the direction of the rotation. So it is recommended that, the values should read and reset every time the rotation direction of the wheels are changing.
+
+**TODO**: implement to take the rotation direction from motors.write() and correct the counting readings in software level.
+
+## Encoder Functions
+
+```cpp
+void SW_Motors::enableEncoders();
+void SW_Motors::encoderReset();
+int SW_Motors::encoderAverage();
+void SW_Motors::encoderPrint();
+```
+
+### void enableEncoders();
+
+This will enable the encoders by attaching the microcontroller's internal counter to the IR speed encoder module and reset the counter values to 0.
+
+```cpp
+motors.enableEncoders();
+```
+
+### void encoderReset();
+
+This will clean the counter values.
+
+```cpp
+motors.encoderReset();
+```
+
+### uint encoderAverage();
+
+This will return the average reading of the left and right counters as an unsigned integer.
+
+```cpp
+int a = motors.encoderAverage();
+```
+
+### uint getEncoderReading(uint8_t wheel);
+
+This will return the average reading of either left or right counter as an unsigned integer.
+
+```cpp
+int right = motors.getEncoderReading(RIGHT);
+int left = motors.getEncoderReading(LEFT);
+```
+
+### void encoderPrint();
+
+This will print the current encoder reading of both sensors.
+
+```cpp
+motors.encoderPrint();
+```
+example:
+```bash
+Encoder L:10 R:20
 ```
