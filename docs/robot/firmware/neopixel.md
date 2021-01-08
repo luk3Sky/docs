@@ -168,5 +168,5 @@ void rainbowFade2White(int wait, int rainbowLoops, int whiteLoops);
 
 ## Additional Readings
 
-- [Adafruit NeoPixel Library](https://github.com/adafruit/Adafruit_NeoPixel)
-- [WS2812B Datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf)
+- [Adafruit NeoPixel Library](https://github.com/adafruit/Adafruit_NeoPixel){:target="_blank"}
+- [WS2812B Datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf){:target="_blank"}

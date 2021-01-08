@@ -29,3 +29,6 @@ permalink: robot/firmware/ir_library
 
 
 ## Additional Readings
+
+- [](){:target="_blank"}
+- [](){:target="_blank"}

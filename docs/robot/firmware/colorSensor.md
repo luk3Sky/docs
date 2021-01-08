@@ -29,3 +29,6 @@ permalink: robot/firmware/color_library
 
 
 ## Additional Readings
+
+- [](){:target="_blank"}
+- [](){:target="_blank"}
