@@ -28,4 +28,4 @@ permalink: robot/firmware/color_library
 ##  Configurations
 
 
-## Additional Read
+## Additional Readings

@@ -28,4 +28,4 @@ permalink: robot/firmware/ir_library
 ##  Configurations
 
 
-## Additional Read
+## Additional Readings
