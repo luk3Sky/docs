@@ -146,7 +146,7 @@ Full implementation should reply to the server with its proximity readings of 5 
 <tr><td>Destination</td><td> Robot (Physical, Virtual)</td></tr>
 <tr><td>Data Type</td><td> String</td></tr>
 <tr><td>Sample Message</td><td>
-{%d} {%d} {%d} {%d} {%d} 
+%d %d %d %d %d 
 </td></tr>
 <tr><td>Description</td><td>
 Server will update virtual proximity sensor readings to the robot, as the reply to the ‘{channal}/sensor/proximity’ topic.
