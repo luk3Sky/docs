@@ -61,7 +61,7 @@ SW_Motors motors;
 motors.begin();
 ```
 
-## Available Functions
+## Motor Functions
 
 ### motors.write(leftSpeed, rightSpeed);
 
@@ -185,3 +185,9 @@ example:
 ```bash
 Encoder L:10 R:20
 ```
+
+
+## Additional Readings
+
+- [H bridge Motor Driver Circuit](https://www.circuitstoday.com/h-bridge-motor-driver-circuit){:target="_blank"}
+- [A guide on Motor Speed Sensor](https://www.teachmemicro.com/lm393-ir-module-motor-speed-sensor/){:target="_blank"}

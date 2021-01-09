@@ -28,4 +28,7 @@ permalink: robot/firmware/compass_library
 ##  Configurations
 
 
-## Additional Read
+## Additional Readings
+
+- [](){:target="_blank"}
+- [](){:target="_blank"}
