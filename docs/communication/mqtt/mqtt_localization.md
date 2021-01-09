@@ -3,7 +3,7 @@ layout: default
 parent: MQTT
 grand_parent: Communication
 title: Localization
-nav_order: 2
+nav_order: 3
 permalink: communication/mqtt/localization
 ---
 
@@ -28,7 +28,7 @@ Server will update the robots coordinates.
 </td></tr>
 </table>
 
-## /localization/update
+###  /localization/update
 
 <table>
 <tr><td>Source</td><td> Any</td></tr>
@@ -43,7 +43,7 @@ With this, the server can make an interrupt request to send coordinate updates f
 </td></tr>
 </table>
 
-## /localization/info
+###  /localization/info
 
 <table>
 <tr><td>Source</td><td> Local Server, Virtual Robots
@@ -70,7 +70,7 @@ This will be invoked on ‘{channal}/localization/update’ request too.
 </td></tr>
 </table>
 
-## /localization/?
+###  /localization/?
 
 <table>
 <tr><td>Source</td><td> Any</td></tr>

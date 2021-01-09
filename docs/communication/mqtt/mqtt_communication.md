@@ -3,7 +3,7 @@ layout: default
 parent: MQTT
 grand_parent: Communication
 title: Communication
-nav_order: 2
+nav_order: 4
 permalink: communication/mqtt/comm
 ---
 
@@ -28,7 +28,7 @@ The server will send a communication message to a robot. Pure virtual implementa
 </td></tr>
 </table>
 
-### Title
+### /comm/out/{protocol}
 
 <table>
 <tr><td>Source</td><td> Robot</td></tr>
@@ -39,7 +39,6 @@ The server will send a communication message to a robot. Pure virtual implementa
    “id”:{RobotID},
    “msg”: “This is a sample”
 }
-
 </td></tr>
 <tr><td>Description</td><td>
 The robots can transmit messages to other robots using an pre-implemented transmission protocol. Server will decide the destinations for the message.

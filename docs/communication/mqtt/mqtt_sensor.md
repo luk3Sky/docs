@@ -29,7 +29,7 @@ This will request distance sensor readings from a physical robot
 </td></tr>
 </table>
 
-## /sensor/distance
+### /sensor/distance
 
 <table>
 <tr><td>Source</td><td> Robot</td></tr>
@@ -47,7 +47,7 @@ Robot sends its own distance sensor readings to the simulator, as reply to the â
 </td></tr>
 </table>
 
-## /sensor/distance/{robotID}
+### /sensor/distance/{robotID}
 
 <table>
 <tr><td>Source</td><td> Server
@@ -78,7 +78,7 @@ This will request color sensor readings from a physical robot..
 </td></tr>
 </table>
 
-## /sensor/color
+### /sensor/color
 
 <table>
 <tr><td>Source</td><td> Physical Robot</td></tr>
@@ -100,7 +100,7 @@ Robot sends its own sensor readings to the server, as a reply to the â€˜{channal
 </td></tr>
 </table>
 
-## /sensor/color/{robotID}
+### /sensor/color/{robotID}
 
 <table>
 <tr><td>Source</td><td> Server
@@ -139,7 +139,7 @@ Full implementation should reply to the server with its proximity readings of 5 
 </td></tr>
 </table>
 
-## /sensor/proximity/{robotID}
+### /sensor/proximity/{robotID}
 
 <table>
 <tr><td>Source</td><td> Server</td></tr>
