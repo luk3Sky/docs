@@ -18,7 +18,7 @@ permalink: robot/firmware/motor_library
 ----
 # Motors
 
-To add the motors of the Swarm-Robot, you need to include following header file.
+To add the motors of the Swarm-Robot, you need to include the following header file.
 
 ```cpp
 #include "src/SW_Motors.h"
@@ -48,9 +48,9 @@ void SW_Motors::detach()   	// Detach Servo motors
 
 2. PWM Drive
 
-With this, you can connect any standard motors through a H-bridge motors driver to the controller board. Please refer *MotorDriver daughter board* for detailed technical information.
+With this, you can connect any standard motors through a H-bridge motor driver to the controller board. Please refer *MotorDriver daughter board* (will be updated soon) for detailed technical information.
 
-To enable this, you must uncomment #define DRIVE_PWM in features.h
+To enable this, you must uncomment #define DRIVE_PWM in features.h.
 
 ## Setup the Motors
 
@@ -65,7 +65,7 @@ motors.begin();
 
 ### motors.write(leftSpeed, rightSpeed);
 
-This will write PWM value to motors. leftSpeed and rightSpeed values must be an integer between [-255,255].
+This will write PWM value to motors. *leftSpeed* and *rightSpeed* values must be an integer between [-255,255].
 Positive integer values will rotate motors forward and negative ones will rotate motors backward with the given speed.
 
 ```cpp
@@ -80,7 +80,7 @@ This will turn off both motors.
 motors.stop();
 ```
 
-Following function will turn off both motors and delay for given milliseconds of time.
+The following function will turn off both motors and delay for given milliseconds.
 
 ```cpp
 motors.stop(int16_t delay);
@@ -88,7 +88,7 @@ motors.stop(int16_t delay);
 
 ### motors.test();
 
-This is used to test the functionality of the motors. It will execute following procedures once called.
+This is used to test the functionality of the motors. It will execute the following procedures once called.
 - Turn Counter Clockwise for ~0.5 seconds.
 - Turn Clockwise for ~0.5 seconds.
 - Move forward with increasing speed for ~6.5 seconds.
@@ -102,8 +102,8 @@ motors.test()
 
 ## Configurations
 
-Addition to the above functions, there are two publicly accessible variables to adjust the drift of the motors.
-The values should be stored in EEPROM memory and write into variables during memory.begin().
+In addition to the above functions, there are two publicly accessible variables to adjust the drift of the motors.
+The values should be stored in EEPROM memory and write into variables during *memory.begin()*.
 
 Following will update the error correction values on the memory.
 - Default: 0
@@ -126,11 +126,11 @@ motors.leftCorrection = memory.getErrorCorrection(LEFT);
 ----
 # Wheel Encoders
 
-Robot wheels are comes with optical rotary encoders. There are 36 holes in the robot wheel, therefore 36 signals microcontroller will be captured once the wheel make a full turn. Since the diameter of the wheel is 34mm, the perimeter of the wheel is 106.8mm. Then one tick of the rotary encoder represents a movement of nearly 3mm.
+Robot wheels come with optical rotary encoders. There are 36 holes in the robot wheel, therefore 36 signals microcontroller will be captured once the wheel makes a full turn. Since the diameter of the wheel is 34mm, the perimeter of the wheel is 106.8mm. Then one tick of the rotary encoder represents a movement of nearly 3mm.
 
-One thing to note that, since there is only one counter for wheel, and it can't detect the direction of the rotation. So it is recommended that, the values should read and reset every time the rotation direction of the wheels are changing.
+One thing to note that, since there is only one counter for a wheel, and it can't detect the direction of the rotation. So it is recommended that the values should read and reset every time the rotation direction of the wheels is changing.
 
-**TODO**: implement to take the rotation direction from motors.write() and correct the counting readings in software level.
+**TODO**: implement to take the rotation direction from *motors.write()* and correct the counting readings at software level.
 
 ## Encoder Functions
 
