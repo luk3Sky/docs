@@ -29,6 +29,22 @@ This will request distance sensor readings from a physical robot
 </td></tr>
 </table>
 
+
+### /sensor/distance/{robotID}
+
+<table>
+<tr><td>Source</td><td> Server
+</td></tr>
+<tr><td>Destination</td><td> Robot</td></tr>
+<tr><td>Data Type</td><td> String</td></tr>
+<tr><td>Sample Message</td><td>
+{distance}
+</td></tr>
+<tr><td>Description</td><td>
+Server will update virtual distance sensor readings to the robot.
+</td></tr>
+</table>
+
 ### /sensor/distance
 
 <table>
@@ -47,21 +63,6 @@ Robot sends its own distance sensor readings to the simulator, as reply to the �
 </td></tr>
 </table>
 
-### /sensor/distance/{robotID}
-
-<table>
-<tr><td>Source</td><td> Server
-</td></tr>
-<tr><td>Destination</td><td> Robot</td></tr>
-<tr><td>Data Type</td><td> String</td></tr>
-<tr><td>Sample Message</td><td>
-{distance}
-</td></tr>
-<tr><td>Description</td><td>
-Server will update virtual distance sensor readings to the robot.
-</td></tr>
-</table>
-
 ## Color  Sensor
 
 ### /sensor/color/{robotID}/?
@@ -75,6 +76,22 @@ N/A
 </td></tr>
 <tr><td>Description</td><td>
 This will request color sensor readings from a physical robot..
+</td></tr>
+</table>
+
+
+### /sensor/color/{robotID}
+
+<table>
+<tr><td>Source</td><td> Server
+</td></tr>
+<tr><td>Destination</td><td> Robot</td></tr>
+<tr><td>Data Type</td><td> String</td></tr>
+<tr><td>Sample Message</td><td>
+{R} {G} {B} {ambient}
+</td></tr>
+<tr><td>Description</td><td>
+Server will update virtual sensor readings to the robot. Sensor readings must wait for this reply before deciding the final reading.
 </td></tr>
 </table>
 
@@ -100,22 +117,22 @@ Robot sends its own sensor readings to the server, as a reply to the ‘{channal
 </td></tr>
 </table>
 
-### /sensor/color/{robotID}
+## Proximity Sensor
+
+### /sensor/proximity/{robotID}
 
 <table>
-<tr><td>Source</td><td> Server
-</td></tr>
-<tr><td>Destination</td><td> Robot</td></tr>
+<tr><td>Source</td><td> Server</td></tr>
+<tr><td>Destination</td><td> Robot (Physical, Virtual)</td></tr>
 <tr><td>Data Type</td><td> String</td></tr>
 <tr><td>Sample Message</td><td>
-{R} {G} {B} {ambient}
+%d %d %d %d %d
 </td></tr>
 <tr><td>Description</td><td>
-Server will update virtual sensor readings to the robot. Sensor readings must wait for this reply before deciding the final reading.
+Server will update virtual proximity sensor readings to the robot, as the reply to the ‘{channal}/sensor/proximity’ topic.
 </td></tr>
 </table>
 
-## Proximity Sensor
 
 ### /sensor/proximity
 
@@ -136,19 +153,5 @@ Server will update virtual sensor readings to the robot. Sensor readings must wa
 Here, ‘dist’ parameter is optional.
 
 Full implementation should reply to the server with its proximity readings of 5 sensors
-</td></tr>
-</table>
-
-### /sensor/proximity/{robotID}
-
-<table>
-<tr><td>Source</td><td> Server</td></tr>
-<tr><td>Destination</td><td> Robot (Physical, Virtual)</td></tr>
-<tr><td>Data Type</td><td> String</td></tr>
-<tr><td>Sample Message</td><td>
-%d %d %d %d %d 
-</td></tr>
-<tr><td>Description</td><td>
-Server will update virtual proximity sensor readings to the robot, as the reply to the ‘{channal}/sensor/proximity’ topic.
 </td></tr>
 </table>

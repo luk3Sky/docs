@@ -19,3 +19,5 @@ permalink: links
 - [Documentation Repository](https://github.com/Pera-Swarm/docs){:target="_blank"}
 - [Firmware Repository](https://github.com/Pera-Swarm/firmware){:target="_blank"}
 - [Hardware Repository](https://github.com/Pera-Swarm/hardware){:target="_blank"}
+- [Sandbox Repository](https://github.com/Pera-Swarm/sandbox){:target="_blank"}
+- [Visualizer Repository](https://github.com/Pera-Swarm/visualizer){:target="_blank"}
