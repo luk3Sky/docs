@@ -41,8 +41,9 @@ permalink: communication/mqtt/comm
         }
     </td></tr>
     <tr><td>Description</td><td>
-        The robots can transmit messages to other robots using an pre-implemented transmission protocol. Server will decide the destinations for the message.
+        The robots can transmit messages to other robots using an pre-implemented transmission protocol.
+        Server will decide the robots who can receive the message.
 
-        protocol: simple, directional.
+        <dd>protocol: simple, directional.</dd>
     </td></tr>
 </table>
