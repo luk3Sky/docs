@@ -31,8 +31,8 @@ permalink: communication/mqtt/obstacles
 ### /obstacles/
 
 <table>
-    <tr><td>Source</td><td> GUI</td></tr>
-    <tr><td>Destination</td><td> Server</td></tr>
+    <tr><td>Source</td><td> Server </td></tr>
+    <tr><td>Destination</td><td> GUI</td></tr>
     <tr><td>Data Type</td><td> JSON</td></tr>
     <tr><td>Sample Message</td><td>
         [
