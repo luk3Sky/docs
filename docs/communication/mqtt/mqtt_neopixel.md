@@ -2,9 +2,9 @@
 layout: default
 parent: MQTT
 grand_parent: Communication
-title: NeoPixel LED
+title: NeoPixel LEDs
 nav_order: 7
-permalink: communication/mqtt/neopixelled
+permalink: communication/mqtt/neopixel
 ---
 
 ## NeoPixel LED Protocols
@@ -23,7 +23,8 @@ permalink: communication/mqtt/neopixelled
         {"id": 10, "R": 0, "G": 0, "B": 0}
     </td></tr>
     <tr><td>Description</td><td>
-        Broadcast the RGB values of robot to the Server/ GUI through the topic <i> /output/neopixel</i>
+        Broadcast the RGB values of robot's NeoPixel LED ring to the Server/ GUI through the topic.
+        <dd>Range: [0,255]</dd>
     </td></tr>
 </table>
 
@@ -34,9 +35,11 @@ permalink: communication/mqtt/neopixelled
     <tr><td>Destination</td><td>Robot ( Physical | Virtual ) </td></tr>
     <tr><td>Data Type</td><td>String</td></tr>
     <tr><td>Sample Message</td><td>
-        (%d %d %d, R, G, B)
+        50 100 150
     </td></tr>
     <tr><td>Description</td><td>
-        Server can ask from robot to change their colors by using the topic <i>/output/neopixel/{robotId}</i>
+        Server can ask from robot to change their colors by using the topic <i>/output/neopixel/{robotId}</i><br>
+        <dd>Message format: String "R G B"</dd>
+        <dd>Range: [0,255]</dd>
     </td></tr>
 </table>

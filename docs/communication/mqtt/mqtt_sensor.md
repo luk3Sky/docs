@@ -59,7 +59,9 @@ permalink: communication/mqtt/sensor
         }
     </td></tr>
     <tr><td>Description</td><td>
-        Robot sends its own distance sensor readings to the simulator, as reply to the ‘{channal}/sensor/distance/{robotID}/?’ request
+        Robots publish to this with there own distance sensor readings,
+        and the simulator should be respond by the virtual distance sensor reading through
+        <i>{channal}/sensor/distance/{robotID}</i>.
     </td></tr>
 </table>
 
