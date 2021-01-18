@@ -28,7 +28,7 @@ permalink: communication/mqtt/obstacles
     </td></tr>
 </table>
 
-### /obstacles/
+### /obstacles
 
 <table>
     <tr><td>Source</td><td> Server </td></tr>
