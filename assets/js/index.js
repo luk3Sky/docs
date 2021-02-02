@@ -4,5 +4,10 @@ $(document).ready(function () {
   };
   setTimeout(function () {
     $(".preloader").fadeOut("fast");
-  }, 2500);
+  }, 1500);
+});
+
+window.addEventListener("load", (event) => {
+  console.log("page is loaded successfully");
+  $(".preloader").fadeOut("fast");
 });
