@@ -5,6 +5,8 @@ nav_order: 99
 permalink: documentation
 has_children:  true
 
+search_exclude: true
+sitemap: false
 ---
 
 # Documentation Guide

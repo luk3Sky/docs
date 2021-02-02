@@ -4,6 +4,8 @@ title: Markdown Formats
 nav_order: 2
 parent: Documentation Guide
 permalink: documentation/markdown
+search_exclude: true
+sitemap: false
 ---
 
 # Markdown Formats
