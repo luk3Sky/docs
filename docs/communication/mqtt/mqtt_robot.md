@@ -16,19 +16,24 @@ permalink: communication/mqtt/robot
 ### /robot/msg/{robotID}
 
 <table>
-    <tr><td>Source</td><td>Simulation Server</td></tr>
+    <tr><td>Source</td><td>Simulator</td></tr>
     <tr><td>Destination</td><td>Robot (Virtual | Physical)</td></tr>
     <tr><td>Data Type</td><td>String</td></tr>
     <tr><td>Sample Message</td><td>
         <i>[MessageType] [MessageValue]</i>
     </td></tr>
-    <tr><td>Description</td><td>Send a control message to an individual robot.</td></tr>
+    <tr><td>Description</td>
+        <td>Send a control message to an individual robot.
+            <br><br>
+            <dd>robotID: ID number of the robot</dd>
+        </td>
+    </tr>
 </table>
 
 ### /robot/msg/broadcast
 
 <table>
-    <tr><td>Source</td><td>Simulation Server</td></tr>
+    <tr><td>Source</td><td>Simulator</td></tr>
     <tr><td>Destination</td><td>Robot (Virtual | Physical)</td></tr>
     <tr><td>Data Type</td><td>String</td></tr>
     <tr><td>Sample Message</td><td>
@@ -50,17 +55,21 @@ Example *MessageType* and *MessageValue* pairs:
 
 <table>
     <tr><td>Source</td><td>Robot (Virtual | Physical)</td></tr>
-    <tr><td>Destination</td><td>Simulation Server</td></tr>
+    <tr><td>Destination</td><td>Simulator</td></tr>
     <tr><td>Data Type</td><td>JSON</td></tr>
     <tr><td>Sample Message</td><td>
-        {"id": <i>[robotId]</i>, "reality": <i>[reality]</i>}
+        <div class="language-json highlighter-rouge">
+            <code class="highlight">
+                {"id": <i>[robotID]</i>, "reality": <i>[reality]</i>}
+            </code>
+        </div>
     </td></tr>
     <tr><td>Description</td><td>
         Heartbeat signal from the robots to server.
-        Simulation Server will keep a track of this to remove dead robots from the system.
-
-        <dd>robotId: ID number of the robot</dd>
-        <dd>reality: 0: virtual, 1: real</dd>
+        Simulator will keep a track of this to prune dead robots from the system.
+        <br><br>
+        <dd>robotID: ID number of the robot</dd>
+        <dd>reality: V: virtual, R: real</dd>
     </td></tr>
 </table>
 
@@ -68,35 +77,44 @@ Example *MessageType* and *MessageValue* pairs:
 
 <table>
     <tr><td>Source</td><td>Localization System, Virtual Robot</td></tr>
-    <tr><td>Destination</td><td>Simulation Server, Visualizer</td></tr>
+    <tr><td>Destination</td><td>Simulator, Visualizer</td></tr>
     <tr><td>Data Type</td><td>JSON</td></tr>
     <tr><td>Sample Message</td><td>
-        { "id":0, "x":10, "y":10, "heading":0.0 }
+        <div class="language-json highlighter-rouge">
+            <code class="highlight">
+                { "id":0, "x":10, "y":10, "heading":0.0, "reality": "R" }
+            </code>
+        </div>
     </td></tr>
     <tr><td>Description</td><td>
-        This will be originated by virtual robots themself at the beginning,
+        This will be originated by virtual robots themselves at the beginning,
         or by the localization system for physical robots.
         Information taken by the <i>Simulator</i> will create a robot instance,
-        and the <i>Visualizer</i> will create a robot object too.
-
+        in its Mixed Reality Environment and the <i>Visualizer</i> will create a robot geometry.
+        <br><br>
         <dd>id: ID number of the robot</dd>
         <dd>x, y, z, heading : floating point number with 2 decimals</dd>
+        <dd>reality: V: virtual, R: real</dd>
     </td></tr>
 </table>
 
 ### /robot/delete
 
 <table>
-    <tr><td>Source</td><td>Simulation Server</td></tr>
+    <tr><td>Source</td><td>Simulator</td></tr>
     <tr><td>Destination</td><td>Visualizer</td></tr>
     <tr><td>Data Type</td><td>JSON</td></tr>
     <tr><td>Sample Message</td><td>
-        { "id": [robotId] }
+        <div class="language-json highlighter-rouge">
+            <code class="highlight">
+                { "id": <i>[robotID]</i> }
+            </code>
+        </div>
     </td></tr>
     <tr><td>Description</td><td>
         This will inform other systems to remove the robot.
         Invoked by the prune scheduler on the <i>Simulator</i>.
-
-        <dd>robotId: ID number of the robot</dd>
+        <br><br>
+        <dd>robotID: ID number of the robot</dd>
     </td></tr>
 </table>
