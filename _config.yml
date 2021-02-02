@@ -16,10 +16,25 @@
 title: Pera Swarm Documentation
 description: Complete documentation for Pera Swarm project
 baseurl: "/docs" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://pera-swarm.ce.pdn.ac.lk" # the base hostname & protocol for your site, e.g. http://example.com
 
 permalink: pretty
-exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
+exclude:
+  [
+    "node_modules/",
+    "*.gemspec",
+    "*.gem",
+    "Gemfile",
+    "Gemfile.lock",
+    "package.json",
+    "package-lock.json",
+    "script/",
+    "LICENSE.txt",
+    "lib/",
+    "bin/",
+    "README.md",
+    "Rakefile",
+  ]
 
 # Regression tests
 # By default, the pages in /docs/tests are excluded when the ste is built.
@@ -84,7 +99,6 @@ footer_content: "Department of Comuputer Engineering - University of Peradeniya"
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
 last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
-
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: false # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
@@ -109,12 +123,13 @@ kramdown:
     block:
       line_numbers: false
 
+# Guideline:https://www.digitalocean.com/community/tutorials/jekyll-compress-html
 compress_html:
   clippings: all
   comments: all
-  endings: all
+  endings: []
   startings: []
-  blanklines: false
+  blanklines: true
   profile: false
   # ignore:
   #   envs: all

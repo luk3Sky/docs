@@ -4,7 +4,7 @@ parent: JSON
 grand_parent: Communication
 title: Environment
 nav_order: 2
-permalink: communication/json/environment
+permalink: communication/json/environment/
 ---
 
 # Environment JSON
