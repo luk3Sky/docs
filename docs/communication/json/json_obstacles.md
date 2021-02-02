@@ -4,13 +4,14 @@ parent: JSON
 grand_parent: Communication
 title: Obstacles
 nav_order: 2
-permalink: communication/json/obstacles
+permalink: communication/json/obstacles/
 ---
 
-# Obstacles API
+# Obstacles JSON
 
 Following JSON Schemas are used to communicate obstacle details from the simualtor to visualizer.
 (Not a fully completed yet)
+
 
 ```json
 {
@@ -19,11 +20,19 @@ Following JSON Schemas are used to communicate obstacle details from the simualt
     material : { … },
     position: { x: 0, y: 0  },
     rotation:{ x: 0,  y: 0,  z: 0 }
+    reality: [reality]
 }
 ```
+
+### Reality
+
+- V: virtual (default)
+- R: real
+
+
 ### Geometry
 
-Available geometric shapes, with options:
+Available geometric shapes, with parameters:
 - Box Geometry
 
     - width: required, ex: 300,
@@ -77,19 +86,19 @@ Available geometric shapes, with options:
 
 Available materials:
 - MeshBasicMaterial
-(https://threejs.org/docs/#api/en/materials/MeshBasicMaterial)
+[https://threejs.org/docs/#api/en/materials/MeshBasicMaterial]()
 
 - MeshNormalMaterial
-(https://threejs.org/docs/api/en/materials/MeshNormalMaterial.html)
+[https://threejs.org/docs/api/en/materials/MeshNormalMaterial.html]()
 
 - MeshPhongMaterial
-(https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)
+[https://threejs.org/docs/#api/en/materials/MeshPhongMaterial]()
 
 - MeshPhysicalMaterial
-(https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial)
+[https://threejs.org/docs/#api/en/materials/MeshPhysicalMaterial]()
 
 - MeshStandardMaterial
-(https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)
+[https://threejs.org/docs/#api/en/materials/MeshStandardMaterial]()
 
 Example:
 ```json
