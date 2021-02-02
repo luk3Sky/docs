@@ -16,32 +16,36 @@ permalink: communication/mqtt/robot
 ### /robot/msg/{robotID}
 
 <table>
-<tr><td>Source</td><td>Server</td></tr>
-<tr><td>Destination</td><td>Robot</td></tr>
-<tr><td>Data Type</td><td>String</td></tr>
-<tr><td>Sample Message</td><td>
-{eNum} {integer}
-</td></tr>
-<tr><td>Description</td><td>For an individual robot</td></tr>
+    <tr><td>Source</td><td>Simulator</td></tr>
+    <tr><td>Destination</td><td>Robot (Virtual | Physical)</td></tr>
+    <tr><td>Data Type</td><td>String</td></tr>
+    <tr><td>Sample Message</td><td>
+        <i>[MessageType] [MessageValue]</i>
+    </td></tr>
+    <tr><td>Description</td>
+        <td>Send a control message to an individual robot.
+            <br><br>
+            <dd>robotID: ID number of the robot</dd>
+        </td>
+    </tr>
 </table>
 
 ### /robot/msg/broadcast
 
 <table>
-<tr><td>Source</td><td>Server</td></tr>
-<tr><td>Destination</td><td>Robot</td></tr>
-<tr><td>Data Type</td><td>String</td></tr>
-<tr><td>Sample Message</td><td>
-{eNum} {integer}
-</td></tr>
-<tr><td>Description</td><td>For all active robots
-</td></tr>
+    <tr><td>Source</td><td>Simulator</td></tr>
+    <tr><td>Destination</td><td>Robot (Virtual | Physical)</td></tr>
+    <tr><td>Data Type</td><td>String</td></tr>
+    <tr><td>Sample Message</td><td>
+        <i>[MessageType] [MessageValue]</i>
+    </td></tr>
+    <tr><td>Description</td><td>Send a control message to all active robots.
+    </td></tr>
 </table>
 
 
-Example broadcasts:
+Example *MessageType* and *MessageValue* pairs:
 - ID? -1
-- MODE 1
 - START -1
 - STOP -1
 - RESET -1
@@ -50,51 +54,67 @@ Example broadcasts:
 ### /robot/live
 
 <table>
-<tr><td>Source</td><td>Robot</td></tr>
-<tr><td>Destination</td><td>Server</td></tr>
-<tr><td>Data Type</td><td>String</td></tr>
-<tr><td>Sample Message</td><td>
-{robotId} {reality}
-</td></tr>
-<tr><td>Description</td><td>
-Heartbeat signal from the robot to server. Server will keep a track of this to remove dead robots from the system.
-reality: 0:virtual, 1:real
-</td></tr>
+    <tr><td>Source</td><td>Robot (Virtual | Physical)</td></tr>
+    <tr><td>Destination</td><td>Simulator</td></tr>
+    <tr><td>Data Type</td><td>JSON</td></tr>
+    <tr><td>Sample Message</td><td>
+        <div class="language-json highlighter-rouge">
+            <code class="highlight">
+                {"id": <i>[robotID]</i>, "reality": <i>[reality]</i>}
+            </code>
+        </div>
+    </td></tr>
+    <tr><td>Description</td><td>
+        Heartbeat signal from the robots to server.
+        Simulator will keep a track of this to prune dead robots from the system.
+        <br><br>
+        <dd>robotID: ID number of the robot</dd>
+        <dd>reality: V: virtual, R: real</dd>
+    </td></tr>
 </table>
 
 ### /robot/create
 
 <table>
-<tr><td>Source</td><td>Loc,Robot</td></tr>
-<tr><td>Destination</td><td>Server,GUI</td></tr>
-<tr><td>Data Type</td><td>JSON</td></tr>
-<tr><td>Sample Message</td><td>
-```javascript
-{
-   "id":0,
-   "x":10,
-   "y":10,
-   "heading":0.0
-}
-```
-</td></tr>
-<tr><td>Description</td><td>
-This will be originated by robots (physical, virtual) themself at the beginning, or by the localization system
-Information taken by the simulator will create a robot instance, and GUI will create a robot object too.
-x,y,z,heading : number in #.## format
-</td></tr>
+    <tr><td>Source</td><td>Localization System, Virtual Robot</td></tr>
+    <tr><td>Destination</td><td>Simulator, Visualizer</td></tr>
+    <tr><td>Data Type</td><td>JSON</td></tr>
+    <tr><td>Sample Message</td><td>
+        <div class="language-json highlighter-rouge">
+            <code class="highlight">
+                { "id":0, "x":10, "y":10, "heading":0.0, "reality": "R" }
+            </code>
+        </div>
+    </td></tr>
+    <tr><td>Description</td><td>
+        This will be originated by virtual robots themselves at the beginning,
+        or by the localization system for physical robots.
+        Information taken by the <i>Simulator</i> will create a robot instance,
+        in its Mixed Reality Environment and the <i>Visualizer</i> will create a robot geometry.
+        <br><br>
+        <dd>id: ID number of the robot</dd>
+        <dd>x, y, z, heading : floating point number with 2 decimals</dd>
+        <dd>reality: V: virtual, R: real</dd>
+    </td></tr>
 </table>
 
 ### /robot/delete
 
 <table>
-<tr><td>Source</td><td>Server,GUI</td></tr>
-<tr><td>Destination</td><td>Any</td></tr>
-<tr><td>Data Type</td><td>JSON</td></tr>
-<tr><td>Sample Message</td><td>
-{ "id":0 }
-</td></tr>
-<tr><td>Description</td><td>
-This will inform other systems to remove the robot. Invoked by the prune scheduler on the server.
-</td></tr>
+    <tr><td>Source</td><td>Simulator</td></tr>
+    <tr><td>Destination</td><td>Visualizer</td></tr>
+    <tr><td>Data Type</td><td>JSON</td></tr>
+    <tr><td>Sample Message</td><td>
+        <div class="language-json highlighter-rouge">
+            <code class="highlight">
+                { "id": <i>[robotID]</i> }
+            </code>
+        </div>
+    </td></tr>
+    <tr><td>Description</td><td>
+        This will inform other systems to remove the robot.
+        Invoked by the prune scheduler on the <i>Simulator</i>.
+        <br><br>
+        <dd>robotID: ID number of the robot</dd>
+    </td></tr>
 </table>

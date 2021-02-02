@@ -13,7 +13,10 @@
 
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
 
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">-->
+
     <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/index.css' | relative_url }}">
 
     {% if site.ga_tracking != nil %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
@@ -27,16 +30,20 @@
 
     {% endif %}
 
+
+    <script src="{{ '/assets/js/vendor/jquery-3.5.1.min.js' | relative_url }}"></script>
     {% if site.search_enabled != false %}
     <script type="text/javascript" src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
     {% endif %}
     <script type="text/javascript" src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+
     <script type="text/javascript" src="{{ '/assets/js/index.js' | relative_url }}"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>-->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% seo %}
-
-    {% include head_custom.html %}
 
 </head>
