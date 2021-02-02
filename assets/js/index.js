@@ -6,3 +6,8 @@ $(document).ready(function () {
     $(".preloader").fadeOut("fast");
   }, 2500);
 });
+
+window.addEventListener("load", (event) => {
+  console.log("page is loaded successfully");
+  $(".preloader").fadeOut("fast");
+});
