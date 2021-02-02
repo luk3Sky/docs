@@ -4,6 +4,8 @@ title: Page Template
 nav_order: 1
 parent: Documentation Guide
 permalink: documentation/pages
+search_exclude: true
+sitemap: false
 ---
 
 # Page Template
