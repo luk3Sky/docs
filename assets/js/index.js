@@ -4,7 +4,7 @@ $(document).ready(function () {
   };
   setTimeout(function () {
     $(".preloader").fadeOut("fast");
-  }, 1500);
+  }, 500);
 });
 
 window.addEventListener("load", (event) => {
