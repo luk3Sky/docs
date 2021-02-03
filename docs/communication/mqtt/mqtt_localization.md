@@ -39,12 +39,18 @@ permalink: communication/mqtt/localization
     <tr><td>Sample Message</td><td>
         <div class="language-json highlighter-rouge">
             <code class="highlight">
-                [{
-                    "id":"1",
-                    "x":"10",
-                    "y":"15",
-                    "heading":"90"
-                },... ]
+                {
+                    "reality": <i>[reality]</i>,
+                    "data": [
+                        {
+                            "id": "<i>[robotID]</i>",
+                            "x": "<i>[X]</i>",
+                            "y": "<i>[Y]</i>",
+                            "heading": "<i>[heading]</i>"
+                        },
+                    ...
+                    ]
+                }
             </code>
         </div>
     </td></tr>
@@ -53,6 +59,7 @@ permalink: communication/mqtt/localization
         a list of robot coordinates in requested reality.
 
         <br><br>
+        <dd>reality: R: real, V:virtual, required</dd>
         <dd>data: A JSON <i>list</i> of coordinates of the robots.</dd>
 
         <br><br>
