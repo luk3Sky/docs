@@ -3,7 +3,7 @@ layout: default
 parent: JSON
 grand_parent: Communication
 title: Obstacles
-nav_order: 2
+nav_order: 1
 permalink: communication/json/obstacles/
 ---
 
