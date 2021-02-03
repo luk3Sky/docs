@@ -13,22 +13,57 @@ permalink: communication/mqtt/localization
 - TOC
 {:toc}
 
-###  /localization/?
+###  /localization/data/?
 
 <table>
-    <tr><td>Source</td><td>Any</td></tr>
+    <tr><td>Source</td><td>Subsystem (Visualizer, Sandbox)</td></tr>
     <tr><td>Destination</td><td>Simulator</td></tr>
     <tr><td>Data Type</td><td>String</td></tr>
     <tr><td>Message Format</td><td>
         {reality}
     </td></tr>
     <tr><td>Description</td><td>
-        Once a message received to this, make a publish to the topic
-        <i>{channal}/localization/info</i>, the coordinates of the robots in the requested reality.
+        Subsystems can request robot coordinate details through this topic, with a reality filter.
+        Simulator will reply coordinate list through the topic <i>/localization/data</i>
         <br><br>
         <dd>reality: M: mixed (default), V: virtual, R: real</dd>
     </td></tr>
 </table>
+
+###  /localization/data
+
+<table>
+    <tr><td>Source</td><td>Simulator</td></tr>
+    <tr><td>Destination</td><td>Subsystems (Visualizer, Sandbox)</td></tr>
+    <tr><td>Data Type</td><td>JSON List</td></tr>
+    <tr><td>Sample Message</td><td>
+        <div class="language-json highlighter-rouge">
+            <code class="highlight">
+                [{
+                    "id":"1",
+                    "x":"10",
+                    "y":"15",
+                    "heading":"90"
+                },... ]
+            </code>
+        </div>
+    </td></tr>
+    <tr><td>Description</td><td>
+        This is the response to the topic, <i>/localization/data/?</i>,
+        a list of robot coordinates in requested reality.
+
+        <br><br>
+        <dd>data: A JSON <i>list</i> of coordinates of the robots.</dd>
+
+        <br><br>
+        <dd>id: ID number of the robot</dd>
+        <dd>X,Y: Robot coordinate readings in centimeters</dd>
+        <dd>heading: heading of the robot in degrees, 0=x+ direction</dd>
+
+    </td></tr>
+</table>
+
+
 
 ### /localization
 
@@ -37,11 +72,7 @@ permalink: communication/mqtt/localization
     <tr><td>Destination</td><td>Simulator</td></tr>
     <tr><td>Data Type</td><td>JSON</td></tr>
     <tr><td>Message Format</td><td>
-        <div class="language-json highlighter-rouge">
-            <code class="highlight">
-                {"id": <i>[robotId]</i>}
-            </code>
-        </div>
+        [robotId]
     </td></tr>
     <tr><td>Description</td><td>
         Both physical and virtual robots can publish into this topic to request their own localization details
@@ -64,7 +95,7 @@ permalink: communication/mqtt/localization
     </td></tr>
     <tr><td>Description</td><td>
         Simulator will reply the robots coordinates to the robot that request their own
-        coordinates as response to the topic <i>/localization</i> through this.
+        coordinates. This will be sent as a response to the topic <i>/localization</i>
 
         <br><br>
         <dd>robotID: ID number of the robot</dd>
@@ -73,54 +104,56 @@ permalink: communication/mqtt/localization
     </td></tr>
 </table>
 
-###  /localization/update
+###  /localization/update/?
 
 <table>
-    <tr><td>Source</td><td>Any</td></tr>
+    <tr><td>Source</td><td>Simulator</td></tr>
     <tr><td>Destination</td><td>Localization System, Virtual Robots
     </td></tr>
     <tr><td>Data Type</td><td>String</td></tr>
-    <tr><td>Sample Message</td><td>
+    <tr><td>Message Format</td><td>
         ?
     </td></tr>
     <tr><td>Description</td><td>
-        Any subsystem can publish into this topic to request coordinate updates from the
-        Localization System (for physical robots) or Virtual Robots. Recomended to use this by
-        simulation server, once it is started. It will receive the response through <i>/localization/info</i> topic.
+        The simulator can request coordinate details from the
+        Localization System (for physical robots) or Virtual Robots by publishing
+        into this topic. Recomended to use this by Simulation, once it is started.
+        This will receive the response through <i>/localization/update</i> topic.
     </td></tr>
 </table>
 
-###  /localization/info
+
+###  /localization/update
 
 <table>
-    <tr><td>Source</td><td>Localization System, Virtual Robots
-    </td></tr>
-    <tr><td>Destination</td><td>Any (Simulator, GUI)</td></tr>
-    <tr><td>Data Type</td><td>JSON List</td></tr>
-    <tr><td>Sample Message</td><td>
+    <tr><td>Source</td><td>Virtual Robots, Localization System</td></tr>
+    <tr><td>Destination</td><td>Simulator</td></tr>
+    <tr><td>Data Type</td><td>String</td></tr>
+    <tr><td>Message Format</td><td>
         <div class="language-json highlighter-rouge">
             <code class="highlight">
-                {"reality":"<i>[reality]</i>","data":[{
-                    "id":"#",
-                    "x":"10",
-                    "y":"15",
-                    "heading":"90.1"
-                },…]}
+                {
+                    "reality": <i>[reality]</i>,
+                    "data": [
+                    {"id": "<i>[robotID]</i>", "x": "<i>[X]</i>", "y": "<i>[Y]</i>", "heading": "<i>[heading]</i>"},
+                    ...
+                    ]
+                }
             </code>
         </div>
     </td></tr>
     <tr><td>Description</td><td>
-        This is an event triggered update from the localization system or virtual robots,
-        only send the updates of the robots with a significant move from the last update
-        This will be also invoked as a reply to <i>/localization/update</i> request from the simulator.
-        <br><br>
-        <dd>reality: M: mixed (default), V: virtual, R: real</dd>
-        <dd>data: A JSON <i>list</i> of coordinates of the robots.</dd>
+        Subsystems can inform the actual coordinates of the robots to the Simulator using this topic.
+        Used by Localization System, to send a list of coordinates with <i>"reality": "R"</i>, and
+        Virtual robots to send a single coordinate with <i>"reality": "V"</i>
 
         <br><br>
-        <dd>id: ID number of the robot</dd>
+        <dd>reality: R: real, V:virtual, required</dd>
+        <dd>data: A JSON list of coordinates</dd>
+
+        <br>
+        <dd>robotID: ID number of the robot</dd>
         <dd>X,Y: Robot coordinate readings in centimeters</dd>
         <dd>heading: heading of the robot in degrees, 0=x+ direction</dd>
-
     </td></tr>
 </table>
