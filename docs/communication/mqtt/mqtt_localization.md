@@ -39,18 +39,16 @@ permalink: communication/mqtt/localization
     <tr><td>Sample Message</td><td>
         <div class="language-json highlighter-rouge">
             <code class="highlight">
+                [
                 {
-                    "reality": <i>[reality]</i>,
-                    "data": [
-                        {
-                            "id": "<i>[robotID]</i>",
-                            "x": "<i>[X]</i>",
-                            "y": "<i>[Y]</i>",
-                            "heading": "<i>[heading]</i>"
-                        },
-                    ...
-                    ]
-                }
+                    "id": "<i>[robotID]</i>",
+                    "x": "<i>[X]</i>",
+                    "y": "<i>[Y]</i>",
+                    "heading": "<i>[heading]</i>",
+                    "reality": <i>[reality]</i>
+                },
+                ...
+                ]
             </code>
         </div>
     </td></tr>
@@ -59,13 +57,10 @@ permalink: communication/mqtt/localization
         a list of robot coordinates in requested reality.
 
         <br><br>
-        <dd>reality: R: real, V:virtual, required</dd>
-        <dd>data: A JSON <i>list</i> of coordinates of the robots.</dd>
-
-        <br><br>
         <dd>id: ID number of the robot</dd>
         <dd>X,Y: Robot coordinate readings in centimeters</dd>
         <dd>heading: heading of the robot in degrees, 0=x+ direction</dd>
+        <dd>reality: R: real, V:virtual, required</dd>
 
     </td></tr>
 </table>
@@ -84,7 +79,7 @@ permalink: communication/mqtt/localization
     <tr><td>Description</td><td>
         Both physical and virtual robots can publish into this topic to request their own localization details
         from the Simulator. This is mostly used by the hardware robots to correct their internal coordinate variables.
-        They will receive the results through the topic <i>/localization/{robotId}</i>
+        They will receive the results through the topic <i>/localization/{robotId}</i>.
 
         <br><br>
         <dd>robotID: ID number of the robot</dd>
@@ -139,13 +134,16 @@ permalink: communication/mqtt/localization
     <tr><td>Message Format</td><td>
         <div class="language-json highlighter-rouge">
             <code class="highlight">
+                [
                 {
-                    "reality": <i>[reality]</i>,
-                    "data": [
-                    {"id": "<i>[robotID]</i>", "x": "<i>[X]</i>", "y": "<i>[Y]</i>", "heading": "<i>[heading]</i>"},
-                    ...
-                    ]
-                }
+                    "id": "<i>[robotID]</i>",
+                    "x": "<i>[X]</i>",
+                    "y": "<i>[Y]</i>",
+                    "heading": "<i>[heading]</i>",
+                    "reality": <i>[reality]</i>
+                },
+                ...
+                ]
             </code>
         </div>
     </td></tr>
@@ -155,12 +153,9 @@ permalink: communication/mqtt/localization
         Virtual robots to send a single coordinate with <i>"reality": "V"</i>
 
         <br><br>
-        <dd>reality: R: real, V:virtual, required</dd>
-        <dd>data: A JSON list of coordinates</dd>
-
-        <br>
         <dd>robotID: ID number of the robot</dd>
         <dd>X,Y: Robot coordinate readings in centimeters</dd>
         <dd>heading: heading of the robot in degrees, 0=x+ direction</dd>
+        <dd>reality: R: real, V:virtual, required</dd>
     </td></tr>
 </table>
