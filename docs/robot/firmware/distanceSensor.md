@@ -80,7 +80,11 @@ If you are using the GP2Y0A21YK0F sensor, it will print a message like '>> Dist.
 
 ### getRawDistance( bool avoidBurstRead );
 
-If there no obstacle found within the range DISTANCE_MAX_THRESHOLD (defined in src/SW_Distance.h) the function will return -1. Otherwise, this will return the raw distance reading as a 16-bit integer; the distance in mm.
+If there no obstacle found within the range *DISTANCE_MAX_THRESHOLD* (defined in src/SW_Distance.h) the function will return *DISTANCE_MAX_THRESHOLD*.
+
+If the range reading of the sensor is equal or less than *DISTANCE_MIN_THRESHOLD* (defined in src/SW_Distance.h) the function will return *DISTANCE_MAX_THRESHOLD* (this is an observation based result, if no obstacle within the max range of the sensor, it will return a small value, less than this *DISTANCE_MIN_THRESHOLD*).
+
+Otherwise, this will return the raw distance reading as a 16-bit integer; the distance in mm. (after correcting the reading with *DISTANCE_OFFSET*)
 
 If the boolean flag *avoidBurstRead* is set to *true*, it will add a DISTANCE_BURST_DELAY amount of  milliseconds before reading. (defined in src/SW_Distance.h, the default is 20). This will help in taking continuous readings from the sensor. The default value is *true*.
 

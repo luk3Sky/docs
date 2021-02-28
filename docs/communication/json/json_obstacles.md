@@ -3,7 +3,7 @@ layout: default
 parent: JSON
 grand_parent: Communication
 title: Obstacles
-nav_order: 2
+nav_order: 1
 permalink: communication/json/obstacles/
 ---
 
@@ -16,19 +16,23 @@ Following JSON Schemas are used to communicate obstacle details from the simualt
 ```json
 {
     id: 1000,
+    name: "Obstacle Name",
+    reality: [reality],
     geometry: { … },
     material : { … },
-    position: { x: 0, y: 0  },
+    position: { x: 0, y: 0 },
     rotation:{ x: 0,  y: 0,  z: 0 }
-    reality: [reality]
 }
 ```
+
+### Name
+
+A name can be provided to the obstacles using the *name* parameter in *env.config.json* file.
 
 ### Reality
 
 - V: virtual (default)
 - R: real
-
 
 ### Geometry
 
@@ -81,7 +85,6 @@ Available geometric shapes, with parameters:
 }
 ```
 
-
 ### Material
 
 Available materials:
@@ -119,3 +122,15 @@ Full Example:
   "rotation":{"x":0,"y":0,"z":0}
 }
 ```
+
+### Position
+
+<dd>x: X coordinate of the object</dd>
+<dd>y: Y coordinate of the object</dd>
+<dd>z: Z coordinate of the object | optional</dd>
+
+### Rotation
+
+<dd>x: rotation through the x-axis of the object</dd>
+<dd>y: rotation through the y-axis of the object</dd>
+<dd>z: rotation through the z-axis of the object</dd>

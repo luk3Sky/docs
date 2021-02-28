@@ -80,7 +80,7 @@ This will turn off both motors.
 motors.stop();
 ```
 
-The following function will turn off both motors and delay for given milliseconds.
+The following function will stop both motors after a delay of given milliseconds.
 
 ```cpp
 motors.stop(int16_t delay);

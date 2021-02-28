@@ -23,6 +23,7 @@ Example:
         "yMax": 150,
         "units": "virtual"
     },
+    "channel": "v1",
     "obstacles": [
     {
         "type": "wall",
@@ -59,7 +60,6 @@ Example:
             "color": "#00AA00"
         }
     }
-    ],
-    "channel": "v1/"
+    ]
 }
 ```

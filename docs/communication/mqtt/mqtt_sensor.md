@@ -161,7 +161,7 @@ permalink: communication/mqtt/sensor
     </td></tr>
 </table>
 
-## Proximity Sensor (Tentative - Will be updated soon)
+## Proximity Sensor (Subject to change)
 
 ### /sensor/proximity/{robotID}
 
@@ -173,7 +173,13 @@ permalink: communication/mqtt/sensor
         %d %d %d %d %d
     </td></tr>
     <tr><td>Description</td><td>
-        Simulator will update virtual proximity sensor readings to the robot, as the reply to the ‘/sensor/proximity’ topic.
+        Simulator will update virtual proximity sensor readings to the robot,
+        as the reply to the ‘/sensor/proximity’ topic.<br><br>
+
+        5 readings are representing the distance readings of following 5 angles,
+        relative to the heading direction of the robot.<br><br>
+
+        <dd>[-150, 90, 0, 90, 150]</dd>
     </td></tr>
 </table>
 
@@ -186,15 +192,14 @@ permalink: communication/mqtt/sensor
     <tr><td>Data Type</td><td> JSON</td></tr>
     <tr><td>Message Format</td><td>
         {
-            "id":0,
-            "dist": [%d,%d,%d,%d,%d]
+            "id":0, "reality":[reality]
         }
 
     </td></tr>
     <tr><td>Description</td><td>
-        ‘dist’ parameter will not be implemented in this phase because the sensor is entirely virtual. Here, ‘dist’ parameter is optional. Full implementation should reply to the Simulator with its proximity readings of 5 sensors
-
+        The sensor is entirely virtual and both virtual and physical robots can
+        request the proximity readings from the simulator using this.
         <br><br>
-        <dd>reality(optional): A: all, V: virtual(default), R: real</dd>
+        <dd>reality(optional): V: virtual(default, and the only possible option far)</dd>
     </td></tr>
 </table>
